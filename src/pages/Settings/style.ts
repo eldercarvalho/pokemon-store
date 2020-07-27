@@ -21,6 +21,13 @@ export const Container = styled.div`
     text-align: center;
     line-height: 1;
   }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 3rem;
+    }
+  }
 `;
 
 export const ThemeOptions = styled.div`

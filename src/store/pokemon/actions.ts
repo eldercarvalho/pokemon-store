@@ -48,8 +48,11 @@ export const fetchPokemon = () => async (dispatch: Dispatch): Promise<void> => {
     };
   });
 
-  dispatch({
-    type: PokemonActions.FetchPokemon,
-    payload: pokemon,
-  });
+  // um delay aqui só pra apreciar a delícia do loading hehe
+  setTimeout(() => {
+    dispatch({
+      type: PokemonActions.FetchPokemon,
+      payload: pokemon,
+    });
+  }, 800);
 };

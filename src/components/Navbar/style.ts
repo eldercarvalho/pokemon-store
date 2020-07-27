@@ -114,6 +114,10 @@ export const LogoLink = styled(Link)`
   }
 
   @media (max-width: 320px) {
+    img {
+      width: 100px;
+    }
+
     span {
       display: none;
     }
