@@ -53,7 +53,7 @@ export const Container = styled.nav`
         text-align: center;
         color: #fff;
         border-radius: 50%;
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
     }
   }

@@ -10,7 +10,7 @@ export const Container = styled.div<CartProps>`
   top: 60px;
   right: 0;
   width: 320px;
-  height: calc(100vh - 60px);
+  height: calc(100% - 60px);
   background: #fff;
   box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
