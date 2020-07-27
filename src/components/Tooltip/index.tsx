@@ -8,7 +8,7 @@ const Product: React.FC = () => {
   const { themeName, theme } = useTheme();
 
   return (
-    <Container>
+    <Container className="loading">
       <img src={theme.loading} alt={themeName} />
     </Container>
   );

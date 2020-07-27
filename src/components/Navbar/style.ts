@@ -104,6 +104,20 @@ export const LogoLink = styled(Link)`
       width: 100px;
     }
   }
+
+  @media (max-width: 800px) {
+    font-size: 1.6rem;
+
+    img {
+      width: 70px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const AbsoluteAutocomplete = styled(Autocomplete)`
