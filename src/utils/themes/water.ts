@@ -1,4 +1,4 @@
-import { FiShoppingCart, FiSettings, FiCheck, FiX } from 'react-icons/fi';
+import { FiShoppingCart, FiSettings, FiCheck, FiX, FiSearch } from 'react-icons/fi';
 
 import loadingGif from '../../assets/images/water-loading.gif';
 import storePetPng from '../../assets/images/water-store-pet.png';
@@ -19,6 +19,7 @@ export const water = {
     settings: FiSettings,
     check: FiCheck,
     close: FiX,
+    search: FiSearch,
     pokeballs: pokeballsSvg,
   },
   loading: loadingGif,

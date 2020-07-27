@@ -72,7 +72,12 @@ interface AutocompleteProps extends InputHTMLAttributes<HTMLInputElement> {
   onChoose?(option: IPokemon): void;
 }
 
-const Autocomplete: React.FC<AutocompleteProps> = ({ options, onChoose, ...rest }) => {
+const Autocomplete: React.FC<AutocompleteProps> = ({
+  options,
+  onChoose,
+  className,
+  ...rest
+}) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [term, setTerm] = useState<string>('');
   const [isOptionsOpened, setIsOptionsOpened] = useState<boolean>(false);
@@ -99,6 +104,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({ options, onChoose, ...rest 
     (option: IPokemon) => {
       if (onChoose) {
         onChoose(option);
+        setIsOptionsOpened(false);
       }
     },
     [onChoose],
@@ -111,7 +117,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({ options, onChoose, ...rest 
   }, [options, term]);
 
   return (
-    <Container ref={containerRef} className="loading">
+    <Container ref={containerRef} className={className}>
       <InputSearch>
         <input
           type="text"

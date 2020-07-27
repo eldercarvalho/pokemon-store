@@ -1,4 +1,4 @@
-import { TiShoppingCart, TiSpannerOutline, TiTimes } from 'react-icons/ti';
+import { TiShoppingCart, TiSpannerOutline, TiTimes, TiZoomOutline } from 'react-icons/ti';
 import { GoCheck } from 'react-icons/go';
 
 import fireLoadingGif from '../../assets/images/fire-loading.gif';
@@ -20,6 +20,7 @@ export const fire = {
     settings: TiSpannerOutline,
     check: GoCheck,
     close: TiTimes,
+    search: TiZoomOutline,
     pokeballs: pokeballsSvg,
   },
   loading: fireLoadingGif,

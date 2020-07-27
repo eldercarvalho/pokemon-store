@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import theme from 'styled-theming';
 import { water, fire } from '../../utils/themes';
-// import Chip from '../Chip';
+
+import Autocomplete from '../Autocomplete';
 
 const cartItemsCountBackgrondColor = theme('theme', {
   water: water.colors.secondary,
@@ -43,7 +44,7 @@ export const Container = styled.nav`
       span {
         position: absolute;
         top: 0;
-        right: -3px;
+        right: 0px;
         display: inline-block;
         background: ${cartItemsCountBackgrondColor};
         width: 16px;
@@ -62,14 +63,19 @@ export const Container = styled.nav`
   }
 
   @media (max-width: 640px) {
-    font-size: 1.6rem;
-
-    img {
-      width: 60px;
+    .search {
+      position: absolute !important;
+      max-width: initial;
+      width: 90%;
+      z-index: 1;
     }
 
-    span {
-      display: none;
+    .buttons {
+      button {
+        & + button {
+          margin-left: 0;
+        }
+      }
     }
   }
 `;
@@ -92,22 +98,19 @@ export const LogoLink = styled(Link)`
   }
 
   @media (max-width: 800px) {
-    font-size: 2rem;
-
-    img {
-      width: 80px;
-    }
-  }
-
-  @media (max-width: 640px) {
     font-size: 1.6rem;
 
     img {
-      width: 60px;
-    }
-
-    span {
-      display: none;
+      width: 100px;
     }
   }
+`;
+
+export const AbsoluteAutocomplete = styled(Autocomplete)`
+  position: absolute !important;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  width: 90%;
 `;

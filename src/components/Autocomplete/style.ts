@@ -22,6 +22,7 @@ export const Container = styled.div`
   max-width: 500px;
   width: 100%;
   border: 1px solid transparent;
+  border-radius: ${borderRadius};
 `;
 
 export const InputSearch = styled.div`
@@ -109,6 +110,19 @@ export const ResultOption = styled.button`
       margin-right: 1rem;
     }
   }
+
+  @media (max-width: 640px) {
+    font-size: 1.4rem;
+
+    img {
+      margin-right: 0;
+    }
+
+    div {
+      opacity: 1;
+      left: 0;
+    }
+  }
 `;
 
 export const NotFoundOption = styled.div`
@@ -117,7 +131,3 @@ export const NotFoundOption = styled.div`
   padding: 1.6rem;
   background: #fff;
 `;
-
-// export const CloseButton = styeld(Button)`
-
-// `

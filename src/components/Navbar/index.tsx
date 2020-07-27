@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { uuid } from 'uuidv4';
+import { useMedia } from 'react-media';
 
 import { IPokemon } from '../../entities/Pokemon';
 
@@ -14,7 +15,7 @@ import logoPng from '../../assets/images/logo.png';
 import Autocomplete from '../Autocomplete';
 import Button from '../Button';
 
-import { Container, LogoLink } from './style';
+import { Container, LogoLink, AbsoluteAutocomplete } from './style';
 
 interface CartProps {
   items: CartItem[];
@@ -28,6 +29,8 @@ interface PokemonProps {
 const Navbar: React.FC = () => {
   const { themeName, theme } = useTheme();
   const location = useLocation();
+  const [showAutocomplete, setShowAutocomplete] = useState<boolean>(false);
+  const isSmallScreen = useMedia({ query: '(max-width: 640px)' });
   const dispatch = useDispatch();
   const { items, isOpened: isCartOpened } = useSelector<Store, CartProps>((state) => {
     return { items: state.cart.items, isOpened: state.cart.isOpened };
@@ -58,12 +61,33 @@ const Navbar: React.FC = () => {
         <LogoLink to="/">
           <img src={logoPng} alt="Pokémon Store" />
           <span>{themeName}</span>
-          store
+          <span>store</span>
         </LogoLink>
 
-        <Autocomplete options={pokemon} onChoose={(option) => handleAddProduct(option)} />
+        {!isSmallScreen && (
+          <Autocomplete
+            options={pokemon}
+            onChoose={(option) => handleAddProduct(option)}
+          />
+        )}
+
+        {isSmallScreen && showAutocomplete && (
+          <AbsoluteAutocomplete
+            options={pokemon}
+            onChoose={(option) => handleAddProduct(option)}
+          />
+        )}
 
         <div className="buttons">
+          {isSmallScreen && (
+            <Button iconOnly onClick={() => setShowAutocomplete(!showAutocomplete)}>
+              {showAutocomplete ? (
+                <theme.icons.close size={24} />
+              ) : (
+                <theme.icons.search size={24} />
+              )}
+            </Button>
+          )}
           <Button iconOnly to="/">
             <theme.icons.pokeballs style={{ width: '24px', height: '24px' }} />
           </Button>
