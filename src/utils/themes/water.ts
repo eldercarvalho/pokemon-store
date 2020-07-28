@@ -1,5 +1,6 @@
 import { FiShoppingCart, FiSettings, FiCheck, FiX, FiSearch } from 'react-icons/fi';
 
+import bannerJpg from '../../assets/images/water-banner.jpg';
 import loadingGif from '../../assets/images/water-loading.gif';
 import storePetPng from '../../assets/images/water-store-pet.png';
 import { ReactComponent as pokeballsSvg } from '../../assets/images/water-pokeballs.svg';
@@ -24,4 +25,5 @@ export const water = {
   },
   loading: loadingGif,
   storePetPng,
+  bannerJpg,
 };

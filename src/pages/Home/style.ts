@@ -1,4 +1,16 @@
 import styled from 'styled-components';
+import theme from 'styled-theming';
+import { water, fire } from '../../utils/themes';
+
+const borderColor = theme('theme', {
+  water: water.colors.secondary,
+  fire: fire.colors.secondary,
+});
+
+const borderRadius = theme('theme', {
+  water: '2rem',
+  fire: '0.5rem',
+});
 
 export const Container = styled.div`
   position: relative;
@@ -18,6 +30,17 @@ export const Container = styled.div`
     .page-title {
       font-size: 2.2rem;
     }
+  }
+`;
+
+export const Banner = styled.div`
+  /* border: 1px solid ${borderColor}; */
+  border-radius: ${borderRadius};
+  overflow: hidden;
+  margin-bottom: 4rem;
+
+  img {
+    display: block;
   }
 `;
 

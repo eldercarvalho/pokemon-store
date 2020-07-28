@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { uuid } from 'uuidv4';
 import { useMedia } from 'react-media';
+import { capitalize } from '../../utils/helpers';
 
 import { IPokemon } from '../../entities/Pokemon';
 
@@ -61,8 +62,8 @@ const Navbar: React.FC = () => {
       <div className="inner-container">
         <LogoLink to="/">
           <img src={logoPng} alt="Pokémon Store" />
-          <span>{themeName}</span>
-          <span>store</span>
+          <span>Loja</span>
+          <span>{capitalize(themeName)}</span>
         </LogoLink>
 
         {!isSmallScreen && (

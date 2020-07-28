@@ -1,6 +1,7 @@
 import { TiShoppingCart, TiSpannerOutline, TiTimes, TiZoomOutline } from 'react-icons/ti';
 import { GoCheck } from 'react-icons/go';
 
+import bannerJpg from '../../assets/images/fire-banner.jpg';
 import fireLoadingGif from '../../assets/images/fire-loading.gif';
 import storePetPng from '../../assets/images/fire-store-pet.png';
 import { ReactComponent as pokeballsSvg } from '../../assets/images/fire-pokeballs.svg';
@@ -25,4 +26,5 @@ export const fire = {
   },
   loading: fireLoadingGif,
   storePetPng,
+  bannerJpg,
 };

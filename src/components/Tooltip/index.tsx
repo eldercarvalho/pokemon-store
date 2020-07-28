@@ -10,7 +10,7 @@ interface TooltipProps {
 const Tooltip: React.FC<TooltipProps> = ({ children, title }) => {
   const nodeRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const isSmallScreen = useMedia({ query: '(max-width: 1023px)' });
+  const isSmallScreen = useMedia({ query: '(max-width: 1024px)' });
 
   return (
     <Container
