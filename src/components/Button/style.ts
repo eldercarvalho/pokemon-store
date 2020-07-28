@@ -116,9 +116,9 @@ export const Container = styled.button<ContainerProps>`
       }
     `}
 
-  @media (min-width: 1024px) {
+  /* @media (min-width: 1024px) {
     &:hover {
       background: ${backgroundColorHover};
     }
-  }
+  } */
 `;
