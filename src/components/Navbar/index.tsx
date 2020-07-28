@@ -14,6 +14,7 @@ import logoPng from '../../assets/images/logo.png';
 
 import Autocomplete from '../Autocomplete';
 import Button from '../Button';
+import Tooltip from '../Tooltip';
 
 import { Container, LogoLink, AbsoluteAutocomplete } from './style';
 
@@ -88,21 +89,27 @@ const Navbar: React.FC = () => {
               )}
             </Button>
           )}
-          <Button iconOnly to="/" title="Pokémon">
-            <theme.icons.pokeballs style={{ width: '24px', height: '24px' }} />
-          </Button>
-          <Button
-            disabled={location.pathname === '/settings'}
-            iconOnly
-            onClick={() => dispatch(toggleCart(!isCartOpened))}
-            title="Carrinho"
-          >
-            <theme.icons.cart size={24} />
-            {items.length > 0 && <span>{items.length}</span>}
-          </Button>
-          <Button iconOnly to="/settings" title="Configurções">
-            <theme.icons.settings size={24} />
-          </Button>
+          <Tooltip title="Loja Pokémon">
+            <Button iconOnly to="/" title="Pokémon">
+              <theme.icons.pokeballs style={{ width: '24px', height: '24px' }} />
+            </Button>
+          </Tooltip>
+          <Tooltip title="Carrinho">
+            <Button
+              disabled={location.pathname === '/settings'}
+              iconOnly
+              onClick={() => dispatch(toggleCart(!isCartOpened))}
+              title="Carrinho"
+            >
+              <theme.icons.cart size={24} />
+              {items.length > 0 && <span>{items.length}</span>}
+            </Button>
+          </Tooltip>
+          <Tooltip title="Configurações">
+            <Button iconOnly to="/settings">
+              <theme.icons.settings size={24} />
+            </Button>
+          </Tooltip>
         </div>
       </div>
     </Container>

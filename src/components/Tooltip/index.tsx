@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import { useMedia } from 'react-media';
 
-import { useTheme } from '../../hooks/theme';
+import { Container, TooltipContainer } from './style';
 
-import { Container } from './style';
+interface TooltipProps {
+  title: string;
+}
 
-const Product: React.FC = () => {
-  const { themeName, theme } = useTheme();
+const Tooltip: React.FC<TooltipProps> = ({ children, title }) => {
+  const nodeRef = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const isSmallScreen = useMedia({ query: '(max-width: 1023px)' });
 
   return (
-    <Container className="loading">
-      <img src={theme.loading} alt={themeName} />
+    <Container
+      ref={nodeRef}
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+    >
+      <div>{children}</div>
+      {isVisible && !isSmallScreen && <TooltipContainer>{title}</TooltipContainer>}
     </Container>
   );
 };
 
-export default Product;
+export default Tooltip;
