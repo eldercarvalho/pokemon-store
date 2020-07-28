@@ -14,13 +14,21 @@ const initialState = {
   checkoutComplete: false,
 };
 
+const calculatePrice = (cartItem: CartItem): number => {
+  if (cartItem.product.discountPrice !== 0) {
+    return cartItem.product.discountPrice * cartItem.quantity;
+  }
+
+  return cartItem.product.price * cartItem.quantity;
+};
+
 export const cartReducer = (state = initialState, action: CartActionType): CartState => {
   switch (action.type) {
     case CartActions.AddToCart:
       return {
         ...state,
         items: [...state.items, action.payload],
-        total: state.total + action.payload.product.price * action.payload.quantity,
+        total: state.total + calculatePrice(action.payload),
       };
     case CartActions.ToggleCart:
       return { ...state, isOpened: action.payload };
@@ -28,7 +36,7 @@ export const cartReducer = (state = initialState, action: CartActionType): CartS
       return {
         ...state,
         items: state.items.filter((item) => item.id !== action.payload.id),
-        total: state.total - action.payload.product.price * action.payload.quantity,
+        total: state.total - calculatePrice(action.payload),
       };
     case CartActions.ClearCart:
       return { ...state, items: [], total: 0 };

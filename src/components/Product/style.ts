@@ -44,6 +44,10 @@ const showOpenCartButtonAnimation = keyframes`
 
 export const Container = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px solid ${borderColor};
   border-radius: ${borderRadius};
   text-align: center;
@@ -72,13 +76,6 @@ export const Container = styled.div`
     margin-bottom: 1rem;
   }
 
-  span {
-    font-family: 'Lato';
-    display: block;
-    font-size: 1.6rem;
-    margin-bottom: 2.2rem;
-  }
-
   .open-cart {
     position: absolute;
     left: 50%;
@@ -87,4 +84,23 @@ export const Container = styled.div`
   }
 
   ${themeStyles}
+`;
+
+export const Prices = styled.div`
+  margin-bottom: 2.2rem;
+  span {
+    font-family: 'Lato';
+    display: block;
+    font-size: 1.6rem;
+
+    &.dashed-price {
+      text-decoration: line-through;
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+  }
+`;
+
+export const Spacer = styled.div`
+  flex: 1 !important;
 `;

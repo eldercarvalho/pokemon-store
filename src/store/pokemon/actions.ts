@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux';
 import axios from 'axios';
+
 import { PokemonActions, PokemonActionTypes } from './actionsTypes';
 import { currencyFormat, capitalize } from '../../utils/helpers';
 import { THEME_NAME_STORAGE_KEY } from '../../hooks/theme';
@@ -39,12 +40,20 @@ export const fetchPokemon = () => async (dispatch: Dispatch): Promise<void> => {
   const pokemonResponses = await Promise.all(promises);
 
   const pokemon = pokemonResponses.slice(0, 24).map(({ data }) => {
+    const hasDiscount = data.id === 7 || data.id === 4;
+    const discount = hasDiscount ? 0.1 : 0;
+    const discountPrice = hasDiscount
+      ? data.base_experience - data.base_experience * discount
+      : 0;
+
     return {
       id: data.id,
       image: data.sprites.front_default,
       name: capitalize(data.name),
       price: data.base_experience,
       formattedPrice: currencyFormat(data.base_experience),
+      discountPrice,
+      formattedDiscountPrice: currencyFormat(discountPrice),
     };
   });
 

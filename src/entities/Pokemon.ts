@@ -4,4 +4,6 @@ export interface IPokemon {
   image: string;
   price: number;
   formattedPrice: string;
+  discountPrice: number;
+  formattedDiscountPrice: string;
 }

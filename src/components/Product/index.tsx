@@ -9,7 +9,7 @@ import { Store, toggleCart, addToCart } from '../../store';
 
 import Button from '../Button';
 
-import { Container } from './style';
+import { Container, Prices, Spacer } from './style';
 
 interface CartProps {
   isOpened: boolean;
@@ -58,12 +58,22 @@ const Product: React.FC<ProductProps> = ({ data, onAdd }) => {
     <Container>
       <img src={data.image} alt={data.name} />
       <h4>{data.name}</h4>
-      <span>{data.formattedPrice}</span>
+      <Prices>
+        {data.discountPrice !== 0 ? (
+          <>
+            <span className="dashed-price">{data.formattedPrice}</span>
+            <span className="price">{data.formattedDiscountPrice}</span>
+          </>
+        ) : (
+          <span className="price">{data.formattedPrice}</span>
+        )}
+      </Prices>
       {addedTocart && !isOpened && (
         <Button small className="open-cart" onClick={() => handleOpenCart()}>
           Ver carrinho
         </Button>
       )}
+      <Spacer />
       <Button className="add-button" variant="secondary" onClick={() => handleAdd(data)}>
         {buttonText === 'Adicionar' ? (
           <theme.icons.cart size={20} />

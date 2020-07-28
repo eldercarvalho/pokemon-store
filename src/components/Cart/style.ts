@@ -86,6 +86,19 @@ export const ProductImage = styled.div`
   }
 `;
 
+export const Prices = styled.div`
+  span {
+    font-family: 'Lato';
+    display: block;
+
+    &.dashed-price {
+      text-decoration: line-through;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+  }
+`;
+
 export const EmptyCart = styled.div`
   position: absolute;
   top: 50%;

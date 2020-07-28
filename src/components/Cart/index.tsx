@@ -27,6 +27,7 @@ import {
   Spacer,
   ClearCartButton,
   ModalContent,
+  Prices,
 } from './style';
 
 type CartProps = {
@@ -79,7 +80,20 @@ const Cart: React.FC = () => {
                   <span>{cartItem.product.name}</span>
                 </div>
                 <span>{cartItem.quantity}</span>
-                <strong>{currencyFormat(cartItem.product.price)}</strong>
+                <Prices>
+                  {cartItem.product.discountPrice !== 0 ? (
+                    <>
+                      <span className="dashed-price">
+                        {cartItem.product.formattedPrice}
+                      </span>
+                      <span className="price">
+                        {cartItem.product.formattedDiscountPrice}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="price">{cartItem.product.formattedPrice}</span>
+                  )}
+                </Prices>
                 <Button small iconOnly onClick={() => dispatch(removeCartItem(cartItem))}>
                   <theme.icons.close size={18} />
                 </Button>
