@@ -61,6 +61,10 @@ export const Container = styled.button<ContainerProps>`
   font-family: 'Lato';
   white-space: nowrap;
 
+  &:hover {
+    background: ${backgroundColorHover};
+  }
+
   svg {
     margin-right: 1rem;
   }
